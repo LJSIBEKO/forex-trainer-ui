@@ -1,0 +1,40 @@
+<app-welcome-nav-bar></app-welcome-nav-bar>
+<div class="container d-flex justify-content-center align-items-center vh-100">
+  <div class="card p-4 shadow-lg" style="max-width: 400px; width: 100%;">
+    <h3 class="text-center mb-4">Account Confirmation</h3>
+
+    <!-- OTP Confirmation Form with Separate Boxes -->
+    <form (ngSubmit)="onConfirm()" #otpForm="ngForm" class="mb-3 text-center">
+
+      <!-- OTP Input Boxes -->
+      <div class="d-flex justify-content-between mb-3">
+        <input *ngFor="let digit of otp; let i = index"
+               type="text"
+               class="form-control text-center mx-1"
+               maxlength="1"
+               [(ngModel)]="otp[i]"
+               (input)="onInput(i)"
+               (keydown)="onKeyDown($event, i)"
+               name="otp{{i}}"
+               #otpInput
+               pattern="[0-9]*"
+               required
+               style="width: 50px; font-size: 1.5rem;">
+      </div>
+
+      <!-- Error Message Display -->
+      <div class="mb-3 text-center text-danger">
+        {{errorMessage}}
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="btn btn-primary w-100" [disabled]="otpForm.invalid">Confirm</button>
+
+    </form>
+
+    <!-- Resend OTP Link -->
+    <div class="text-center">
+      <a href="#" (click)="resendOtp()" class="text-decoration-none">Resend OTP</a>
+    </div>
+  </div>
+</div>

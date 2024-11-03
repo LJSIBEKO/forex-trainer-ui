@@ -16,6 +16,7 @@ import {SessionService} from "./service/session.service";
 import {AppUtilityService} from "./service/app-utility.service";
 import {LoaderService} from "./service/loader.service";
 import {TokenService} from "./service/token.service";
+import { AccountConfirmationComponent } from './account-confirmation/account-confirmation.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import {TokenService} from "./service/token.service";
     LoginComponent,
     RegistrationComponent,
     ForgotPasswordComponent,
-    LoaderComponent
+    LoaderComponent,
+    AccountConfirmationComponent
   ],
   imports: [
     BrowserModule,
