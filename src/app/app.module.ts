@@ -9,6 +9,13 @@ import { LoginComponent } from './login/login.component';
 import {FormsModule} from "@angular/forms";
 import { RegistrationComponent } from './registration/registration.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { LoaderComponent } from './loader/loader.component';
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {InterceptorService} from "./service/interceptor.service";
+import {SessionService} from "./service/session.service";
+import {AppUtilityService} from "./service/app-utility.service";
+import {LoaderService} from "./service/loader.service";
+import {TokenService} from "./service/token.service";
 
 
 @NgModule({
@@ -18,15 +25,22 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     WelcomeNavBarComponent,
     LoginComponent,
     RegistrationComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [
-    FormsModule
+    SessionService,
+    AppUtilityService,
+    LoaderService,
+    TokenService,
+    FormsModule,
+    { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }
   ],
   bootstrap: [AppComponent]
 })
