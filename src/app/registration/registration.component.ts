@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {SessionService} from "../service/session.service";
 
 @Component({
   selector: 'app-registration',
@@ -9,18 +10,31 @@ export class RegistrationComponent {
 
   name: string = '';
   email: string = '';
+  mobile:string = '';
   password: string = '';
   confirmPassword: string = '';
+  successRegister = false;
+  errorMessage = ''
+
+  constructor(private session:SessionService) {
+  }
 
   onSubmit() {
-    // For now, just log the form data
-    console.log("Form Submitted:", {
+
+    const  registerObject = {
       name: this.name,
       email: this.email,
       password: this.password,
-      confirmPassword: this.confirmPassword
+      mobile:this.mobile
+    }
+
+    this.session.register(registerObject).subscribe((response) => {
+      if(response&&response.error){
+          this.errorMessage = response.error.message
+      }else{
+          this.successRegister = true;
+      }
     });
-    // Further registration logic (e.g., API calls) would go here
   }
 
 }

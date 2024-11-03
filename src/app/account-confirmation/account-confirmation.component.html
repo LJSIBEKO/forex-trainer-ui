@@ -1,40 +1,62 @@
 <app-welcome-nav-bar></app-welcome-nav-bar>
 <div class="container d-flex justify-content-center align-items-center vh-100">
-  <div class="card p-4 shadow-lg" style="max-width: 400px; width: 100%;">
+  <!-- OTP Entry Card -->
+  <div class="card p-4 shadow-lg" style="max-width: 400px; width: 100%;" *ngIf="!hideOTPScreen">
     <h3 class="text-center mb-4">Account Confirmation</h3>
 
-    <!-- OTP Confirmation Form with Separate Boxes -->
     <form (ngSubmit)="onConfirm()" #otpForm="ngForm" class="mb-3 text-center">
+      <p>
+        Hi {{ user?.email }}, thank you for registering. To activate your account, please enter the OTP you received in your email.
+      </p>
 
-      <!-- OTP Input Boxes -->
+      <!-- OTP Input Fields -->
       <div class="d-flex justify-content-between mb-3">
-        <input *ngFor="let digit of otp; let i = index"
-               type="text"
-               class="form-control text-center mx-1"
-               maxlength="1"
-               [(ngModel)]="otp[i]"
-               (input)="onInput(i)"
-               (keydown)="onKeyDown($event, i)"
-               name="otp{{i}}"
-               #otpInput
-               pattern="[0-9]*"
-               required
-               style="width: 50px; font-size: 1.5rem;">
+        <div class="d-flex justify-content-between mb-3">
+          <input type="text" class="form-control text-center mx-1" maxlength="1" [(ngModel)]="otp[0]" (input)="onInput(0)" (keydown)="onKeyDown($event, 0)" name="otp0" required style="width: 50px; font-size: 1.5rem;" aria-label="OTP digit 1">
+          <input type="text" class="form-control text-center mx-1" maxlength="1" [(ngModel)]="otp[1]" (input)="onInput(1)" (keydown)="onKeyDown($event, 1)" name="otp1" required style="width: 50px; font-size: 1.5rem;" aria-label="OTP digit 2">
+          <input type="text" class="form-control text-center mx-1" maxlength="1" [(ngModel)]="otp[2]" (input)="onInput(2)" (keydown)="onKeyDown($event, 2)" name="otp2" required style="width: 50px; font-size: 1.5rem;" aria-label="OTP digit 3">
+          <input type="text" class="form-control text-center mx-1" maxlength="1" [(ngModel)]="otp[3]" (input)="onInput(3)" (keydown)="onKeyDown($event, 3)" name="otp3" required style="width: 50px; font-size: 1.5rem;" aria-label="OTP digit 4">
+          <input type="text" class="form-control text-center mx-1" maxlength="1" [(ngModel)]="otp[4]" (input)="onInput(4)" (keydown)="onKeyDown($event, 4)" name="otp4" required style="width: 50px; font-size: 1.5rem;" aria-label="OTP digit 5">
+        </div>
       </div>
 
-      <!-- Error Message Display -->
+      <!-- Error Message -->
       <div class="mb-3 text-center text-danger">
-        {{errorMessage}}
+        {{ errorMessage }}
       </div>
 
-      <!-- Submit Button -->
       <button type="submit" class="btn btn-primary w-100" [disabled]="otpForm.invalid">Confirm</button>
-
     </form>
 
-    <!-- Resend OTP Link -->
     <div class="text-center">
       <a href="#" (click)="resendOtp()" class="text-decoration-none">Resend OTP</a>
+      <div *ngIf="otpResentMessage" class="text-success mt-2">{{ otpResentMessage }}</div>
     </div>
+  </div>
+
+  <!-- Error Card if user not found -->
+  <div class="card p-4 shadow-lg" style="max-width: 400px; width: 100%; margin: auto;" *ngIf="hideOTPScreen">
+    <div class="d-flex align-items-center justify-content-center mb-3">
+      <i class="bi bi-ban-fill" style="font-size: 2rem; margin-right: 10px;"></i>
+      <span>Make sure you registered before confirming your account; we couldn't find this user on our system.</span>
+    </div>
+  </div>
+
+  <!-- Modal for Successful Confirmation -->
+  <div *ngIf="showModal" class="modal show d-block" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Account Confirmed</h5>
+        </div>
+        <div class="modal-body">
+          <p>Your account has been successfully confirmed! Click the button below to log in.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" (click)="redirectToLogin()">Login</button>
+        </div>
+      </div>
+    </div>
+    <div class="modal-backdrop fade show"></div>
   </div>
 </div>

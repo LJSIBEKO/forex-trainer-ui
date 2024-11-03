@@ -30,4 +30,22 @@ export class SessionService {
       catchError(this.handleError<any>('login', {error: ''}))
     );
   }
+
+  register(registerObject: any) {
+    return this.http.post(this.appUtil.base_url + 'sessions/create/client/account', registerObject, this.jsonOptions).pipe(
+      catchError(this.handleError<any>('register', {error: ''}))
+    );
+  }
+
+  findUserAccount(uuid: string | null) {
+    return this.http.get(this.appUtil.base_url + 'sessions/'+uuid,this.jsonOptions).pipe(
+      catchError(this.handleError<any>('findByUserAccount', {error: ''}))
+    );
+  }
+
+  confirmOTP(object: any) {
+    return this.http.post(this.appUtil.base_url + 'sessions/confirm/otp', object, this.jsonOptions).pipe(
+      catchError(this.handleError<any>('confirm', {error: ''}))
+    );
+  }
 }
