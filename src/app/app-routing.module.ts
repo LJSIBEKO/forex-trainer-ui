@@ -9,7 +9,8 @@ const routes: Routes = [
   { path:'' , component:WelcomePageComponent},
   { path:'login', component:LoginComponent},
   { path:'registration' , component:RegistrationComponent},
-  { path: 'forgot-password', component: ForgotPasswordComponent }
+  { path: 'forgot-password', component: ForgotPasswordComponent },
+  { path: 'client' , loadChildren: () => import('./client/client.module').then((m) => m.ClientModule) }
 ];
 
 @NgModule({
