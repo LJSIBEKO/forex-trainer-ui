@@ -1,0 +1,53 @@
+<div class="container mt-4">
+  <h2>Your Chats</h2>
+
+  <!-- Error message display -->
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+
+  <!-- List of chats -->
+  <ul class="list-group mb-3" *ngIf="userChats && userChats.length > 0">
+    <li class="list-group-item" *ngFor="let chat of userChats">
+      <strong (click)="routeToMessages(chat.id)">{{ chat.name }}</strong>
+      <span *ngIf="chat.isGroupChat" class="badge bg-info ms-2">Group Chat</span>
+    </li>
+  </ul>
+
+  <p *ngIf="userChats && userChats.length === 0">No chats available.</p>
+
+  <!-- Create Chat Button -->
+  <button class="btn btn-primary" (click)="openCreateChatModal()">Create Chat</button>
+
+  <!-- Create Chat Modal -->
+  <div class="modal fade" id="createChatModal" tabindex="-1" aria-labelledby="createChatModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="createChatModalLabel">Create New Chat</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="chatName" class="form-label">Chat Name</label>
+              <input type="text" id="chatName" class="form-control" [(ngModel)]="newChatName" name="chatName">
+            </div>
+            <div class="mb-3">
+              <label for="participants" class="form-label">Participants (comma-separated)</label>
+              <input type="text" id="participants" class="form-control" [(ngModel)]="newChatParticipants" name="participants">
+            </div>
+            <div class="mb-3">
+              <label for="isGroupChat" class="form-label">Group Chat</label>
+              <input type="checkbox" id="isGroupChat" [(ngModel)]="isGroupChat" name="isGroupChat">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" (click)="createChat()">Create Chat</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

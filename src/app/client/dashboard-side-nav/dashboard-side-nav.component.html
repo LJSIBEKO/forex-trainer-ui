@@ -1,13 +1,22 @@
 <nav style="width: 200px;">
-    <ol class="list-unstyled p-3">
-        <li class="py-2">
-            <a class="text-decoration-none link-item text-dark" (click)="changePage('courses')" [ngClass]="{'bg-color': curPage === 'courses'}">Courses</a>
-        </li>
-        <li class="py-2">
-            <a class="text-decoration-none link-item text-dark" (click)="changePage('messages')" [ngClass]="{'bg-color': curPage === 'messages'}">Messages</a>
-        </li>
-        <li class="py-2">
-            <a class="text-decoration-none link-item text-dark" (click)="changePage('events')" [ngClass]="{'bg-color': curPage === 'events'}">Calendar Events</a>
-        </li>
-    </ol>
+  <ol class="list-unstyled p-3">
+    <li class="py-2">
+      <a class="text-decoration-none link-item text-dark" (click)="changePage('courses')" [ngClass]="{'bg-color': curPage === 'courses'}">
+        <i class="fas fa-book me-2"></i> <!-- Book icon -->
+        Courses
+      </a>
+    </li>
+    <li class="py-2">
+      <a class="text-decoration-none link-item text-dark" (click)="changePage('messages')" [ngClass]="{'bg-color': curPage === 'messages'}">
+        <i class="fas fa-comments me-2"></i> <!-- Comments icon -->
+        Messages
+      </a>
+    </li>
+    <li class="py-2">
+      <a class="text-decoration-none link-item text-dark" (click)="changePage('calendar')" [ngClass]="{'bg-color': curPage === 'calendar'}">
+        <i class="fas fa-calendar-alt me-2"></i> <!-- Calendar icon -->
+        Calendar
+      </a>
+    </li>
+  </ol>
 </nav>

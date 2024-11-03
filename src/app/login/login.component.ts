@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {AppUtilityService} from "../service/app-utility.service";
 import {SessionService} from "../service/session.service";
 import {TokenService} from "../service/token.service";
-;
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -18,7 +18,8 @@ export class LoginComponent {
 
   constructor(private appUtil:AppUtilityService,
               private sessions:SessionService,
-              private tokenService:TokenService) {
+              private tokenService:TokenService,
+              private route:Router) {
   }
 
   onSubmit() {
@@ -39,6 +40,8 @@ export class LoginComponent {
           this.errorMessage = (response.message === '') ? 'Error occurred please try again later' : response.error.message;
         }else{
           this.tokenService.setToken(response?.token,response?.expires);
+          localStorage.setItem('client_information',JSON.stringify(response.account));
+          this.route.navigateByUrl('/client/dashboard')
         }
     })
   }
