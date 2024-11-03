@@ -1,0 +1,14 @@
+.link-item {
+    display: block;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .link-item:hover {
+    background-color: #e2e2e2;
+  }
+
+
+.bg-color {
+    background-color: #e2e2e2;
+}

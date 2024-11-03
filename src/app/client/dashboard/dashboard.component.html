@@ -1,1 +1,206 @@
-<p>dashboard works!</p>
+<app-nav-bar></app-nav-bar>
+
+<div class="mt-5 d-flex">
+    <app-dashboard-side-nav (pageChange)="onPageChange($event)"></app-dashboard-side-nav>
+
+    <div *ngIf="currentPage === 'courses'" class="flex-grow-1 p-3 mt-4">
+        <!-- <h3>Courses</h3> -->
+        
+        <button class="btn btn-success mb-4" (click)="openAddCourseModal()">
+            Add Course
+        </button>
+    
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">Course Title 1</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Instructor: John Doe</p>
+                        <p class="card-text">Duration: 6 weeks</p>
+                        <p class="card-text">Start Date: January 10, 2024</p>
+                        <a href="#" class="btn btn-primary">View Course</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">Course Title 2</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Instructor: Jane Smith</p>
+                        <p class="card-text">Duration: 8 weeks</p>
+                        <p class="card-text">Start Date: February 15, 2024</p>
+                        <a href="#" class="btn btn-primary">View Course</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">Course Title 3</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Instructor: Alice Johnson</p>
+                        <p class="card-text">Duration: 4 weeks</p>
+                        <p class="card-text">Start Date: March 5, 2024</p>
+                        <a href="#" class="btn btn-primary">View Course</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="currentPage==='messages'" class="flex-grow-1 p-3 mt-4">
+        <!-- <h3>Messages</h3> -->
+        <div class="chat-container"
+            style="height: 70vh; overflow-y: auto; border: 1px solid #ddd; border-radius: 5px; padding: 15px;">
+            <div class="message mb-3">
+                <div class="d-flex justify-content-start">
+                    <div class="user-message bg-primary text-white p-2 rounded">
+                        <strong>You:</strong>
+                        <p>Hello, I need assistance with my order.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="message mb-3">
+                <div class="d-flex justify-content-end">
+                    <div class="admin-message bg-secondary text-white p-2 rounded">
+                        <strong>Admin:</strong>
+                        <p>Sure, I can help you with that. What seems to be the issue?</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="message mb-3">
+                <div class="d-flex justify-content-start">
+                    <div class="user-message bg-primary text-white p-2 rounded">
+                        <strong>You:</strong>
+                        <p>I received the wrong item.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="message mb-3">
+                <div class="d-flex justify-content-end">
+                    <div class="admin-message bg-secondary text-white p-2 rounded">
+                        <strong>Admin:</strong>
+                        <p>I'm sorry to hear that. Can you provide your order number?</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="message mb-3">
+                <div class="d-flex justify-content-end">
+                    <div class="admin-message bg-secondary text-white p-2 rounded">
+                        <strong>Admin:</strong>
+                        <p>I'm sorry to hear that. Can you provide your order number?</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="message mb-3">
+                <div class="d-flex justify-content-end">
+                    <div class="admin-message bg-secondary text-white p-2 rounded">
+                        <strong>Admin:</strong>
+                        <p>I'm sorry to hear that. Can you provide your order number?</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="message mb-3">
+                <div class="d-flex justify-content-end">
+                    <div class="admin-message bg-secondary text-white p-2 rounded">
+                        <strong>Admin:</strong>
+                        <p>I'm sorry to hear that. Can you provide your order number?</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="input-group mt-3">
+            <input type="text" class="form-control" placeholder="Type your message..." aria-label="User's message">
+            <button class="btn btn-primary" type="button">Send</button>
+        </div>
+    </div>
+
+    <div *ngIf="currentPage==='events'" class="flex-grow-1 p-3 mt-4">
+        <!-- <h3>Events</h3> -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="card-title">November 2024</h5>
+                        <button class="btn btn-secondary" (click)="toggleCalendar()">Select Date</button>
+                    </div>
+                    <div class="card-body">
+                        <div *ngIf="showCalendar">
+                            <table class="table table-bordered text-center">
+                                <thead>
+                                    <tr>
+                                        <th>Sun</th>
+                                        <th>Mon</th>
+                                        <th>Tue</th>
+                                        <th>Wed</th>
+                                        <th>Thu</th>
+                                        <th>Fri</th>
+                                        <th>Sat</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let week of calendar">
+                                        <td *ngFor="let day of week" 
+                                            [ngClass]="{'selected': day.selected}" 
+                                            (click)="selectDate(day)" 
+                                            class="date-cell">
+                                            <a *ngIf="day.date" href="#">{{ day.date }}</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">Event List</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <strong>Event Title 1</strong>
+                                <span class="float-end">Nov 1, 2024</span>
+                                <p>Location: Conference Room A</p>
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Event Title 2</strong>
+                                <span class="float-end">Nov 7, 2024</span>
+                                <p>Location: Main Hall</p>
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Event Title 3</strong>
+                                <span class="float-end">Nov 16, 2024</span>
+                                <p>Location: Online</p>
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Event Title 4</strong>
+                                <span class="float-end">Nov 27, 2024</span>
+                                <p>Location: Rooftop Garden</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

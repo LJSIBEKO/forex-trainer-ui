@@ -5,6 +5,7 @@ import {RouterOutlet} from "@angular/router";
 import {ClientComponent} from "./client.component";
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import {ClientRoutingModule} from "./client-routing.module";
+import { DashboardSideNavComponent } from './dashboard-side-nav/dashboard-side-nav.component';
 
 
 
@@ -12,7 +13,8 @@ import {ClientRoutingModule} from "./client-routing.module";
   declarations: [
     ClientComponent,
     DashboardComponent,
-    NavBarComponent
+    NavBarComponent,
+    DashboardSideNavComponent
   ],
   imports: [
     CommonModule,
