@@ -1,0 +1,68 @@
+<app-welcome-nav-bar></app-welcome-nav-bar>
+<div class="container d-flex justify-content-center align-items-center vh-100">
+  <div class="card p-4 shadow-lg" style="max-width: 400px; width: 100%;">
+    <h3 class="text-center mb-4">Login</h3>
+
+    <!-- Standard HTML Form with Angular Template-driven Form Binding -->
+    <form (ngSubmit)="onSubmit()" #loginForm="ngForm" class="mb-3">
+
+      <!-- Email Field -->
+      <div class="mb-3">
+        <label for="email" class="form-label">Email address</label>
+        <div class="input-group">
+          <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+          <input
+            type="email"
+            id="email"
+            [(ngModel)]="email"
+            name="email"
+            class="form-control"
+            placeholder="Enter your email"
+            required
+            #emailField="ngModel">
+        </div>
+        <small *ngIf="emailField.invalid && emailField.touched" class="text-danger">
+          Please enter a valid email.
+        </small>
+      </div>
+
+      <!-- Password Field -->
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <div class="input-group">
+          <span class="input-group-text"><i class="bi bi-lock"></i></span>
+          <input
+            type="password"
+            id="password"
+            [(ngModel)]="password"
+            name="password"
+            class="form-control"
+            placeholder="Enter your password"
+            required
+            #passwordField="ngModel">
+        </div>
+        <small *ngIf="passwordField.invalid && passwordField.touched" class="text-danger">
+          Password is required.
+        </small>
+      </div>
+
+      <!-- Remember Me Checkbox -->
+      <div class="form-check mb-3">
+        <input type="checkbox" class="form-check-input" id="rememberMe" [(ngModel)]="rememberMe" name="rememberMe">
+        <label class="form-check-label" for="rememberMe">Remember Me</label>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="btn btn-primary w-100" [disabled]="loginForm.invalid">Login</button>
+
+    </form>
+
+    <!-- Forgot Password Link -->
+    <div class="text-center">
+      <a href="/forgot-password" class="text-decoration-none">Forgot Password?</a>
+    </div>
+    <div class="text-center">
+      <a href="/registration" class="text-decoration-none">Register new account</a>
+    </div>
+  </div>
+</div>
