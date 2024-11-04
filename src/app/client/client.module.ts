@@ -6,6 +6,10 @@ import {ClientComponent} from "./client.component";
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import {ClientRoutingModule} from "./client-routing.module";
 import { DashboardSideNavComponent } from './dashboard-side-nav/dashboard-side-nav.component';
+import { CalenderComponent } from './calender/calender.component';
+import {FormsModule} from "@angular/forms";
+import { ChatComponent } from './chat/chat.component';
+import { MessageComponent } from './message/message.component';
 
 
 
@@ -14,12 +18,16 @@ import { DashboardSideNavComponent } from './dashboard-side-nav/dashboard-side-n
     ClientComponent,
     DashboardComponent,
     NavBarComponent,
-    DashboardSideNavComponent
+    DashboardSideNavComponent,
+    CalenderComponent,
+    ChatComponent,
+    MessageComponent
   ],
   imports: [
     CommonModule,
     RouterOutlet,
-    ClientRoutingModule
+    ClientRoutingModule,
+    FormsModule
   ]
 })
 export class ClientModule { }

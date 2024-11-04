@@ -1,0 +1,59 @@
+<div class="container-fluid">
+  <div class="row">
+    <!-- Sidebar (Hidden initially) -->
+    <div class="col-md-4" *ngIf="sidebarVisible">
+      <div class="p-3 bg-light rounded">
+        <h4>{{ selectedDay | date: 'fullDate' }}</h4>
+        <div *ngIf="selectedDayEvents.length > 0; else noEventsForDay">
+          <div *ngFor="let event of selectedDayEvents" class="day-event mb-2 p-2 rounded text-white bg-primary">
+            <strong>{{ event.name }}</strong>
+            <p>{{ event.startDate | date: 'shortTime' }} - {{ event.endDate | date: 'shortTime' }}</p>
+          </div>
+        </div>
+        <ng-template #noEventsForDay>
+          <p class="text-muted">No events for this day</p>
+        </ng-template>
+      </div>
+    </div>
+
+    <!-- Main Calendar Section -->
+    <div [ngClass]="{'col-md-8': sidebarVisible, 'col-md-12': !sidebarVisible}">
+      <h4 class="mt-3">Upcoming Events</h4>
+      <div class="mb-4">
+        <div *ngIf="nextUpcomingEvent; else noUpcomingEvents">
+          <div class="upcoming-event mb-2 p-2 bg-secondary text-white rounded">
+            <strong>{{ nextUpcomingEvent.name }}</strong>
+            <p>{{ nextUpcomingEvent.startDate | date: 'short' }}</p>
+            <p>Starts in: {{ timeRemaining }}</p>
+          </div>
+        </div>
+        <ng-template #noUpcomingEvents>
+          <p class="text-muted">No upcoming events</p>
+        </ng-template>
+      </div>
+
+      <!-- Month and Year Filters -->
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <select [(ngModel)]="selectedMonth" (change)="filterEvents()" class="form-select w-50">
+          <option *ngFor="let month of months" [value]="month">{{ month }}</option>
+        </select>
+        <select [(ngModel)]="selectedYear" (change)="filterEvents()" class="form-select w-25 ms-2">
+          <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+        </select>
+      </div>
+
+      <!-- Calendar Grid -->
+      <div class="calendar-grid">
+        <div *ngFor="let day of calendarDays" class="day-cell" (click)="toggleDaySelection(day.date)">
+          <div class="date">{{ day.date | date: 'd' }}</div>
+          <div class="event-lines">
+            <div *ngFor="let event of day.events"
+                 class="event-line"
+                 [ngStyle]="{'top': getEventPosition(event.startDate) + 'px', 'height': getEventHeight(event) + 'px'}">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

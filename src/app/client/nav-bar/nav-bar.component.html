@@ -1,34 +1,10 @@
 <!-- navbar.component.html -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-  <div class="container d-flex justify-content-between align-items-center">
-    <!-- Brand on the left side -->
-    <a class="navbar-brand font-weight-bold" routerLink="/">CTFX Coaching</a>
+    <div class="container d-flex justify-content-between align-items-center">
+      <!-- Brand on the left side -->
+      <a class="navbar-brand font-weight-bold" routerLink="/">CTFX Coaching</a>
 
-    <!-- Centered navigation links with border and background -->
-    <div class="centered-links">
-      <ul class="navbar-nav mx-auto">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="client/">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/" >About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="admin/">Admin</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="courses/">Courses</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/testimonial">Testimonials</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/community-chat">Community Chat</a>
-        </li>
-      </ul>
+      <!-- Login button on the right -->
+      <a (click)="logout()" class="btn btn-primary">Logout</a>
     </div>
-
-    <!-- Login button on the right -->
-    <a routerLink="/login" class="btn btn-primary">Login</a>
-  </div>
-</nav>
+  </nav>

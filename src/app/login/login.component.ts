@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import {AppUtilityService} from "../service/app-utility.service";
 import {SessionService} from "../service/session.service";
 import {TokenService} from "../service/token.service";
-import { Router } from '@angular/router';
-;
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -19,7 +18,8 @@ export class LoginComponent {
 
   constructor(private appUtil:AppUtilityService,
               private sessions:SessionService,
-              private tokenService:TokenService, private router: Router) {
+              private tokenService:TokenService,
+              private route:Router) {
   }
 
   onSubmit() {
@@ -41,8 +41,8 @@ export class LoginComponent {
       
         }else{
           this.tokenService.setToken(response?.token,response?.expires);
-          
-          this.router.navigateByUrl('client/dashboard');
+          localStorage.setItem('client_information',JSON.stringify(response.account));
+          this.route.navigateByUrl('/client/dashboard')
         }
     })
   }

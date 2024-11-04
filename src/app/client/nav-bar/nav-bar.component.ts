@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-nav-bar',
@@ -7,6 +8,9 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class NavBarComponent {
 
+
+  constructor(private router:Router) {
+  }
   @Output() pageChange: EventEmitter<string> = new EventEmitter<string>();
 
   changePage(page: string) {
@@ -17,4 +21,8 @@ export class NavBarComponent {
     this.pageChange.emit('courses');
   }
 
+  logout() {
+    localStorage.clear();
+    this.router.navigateByUrl('/');
+  }
 }
