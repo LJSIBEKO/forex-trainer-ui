@@ -1,0 +1,31 @@
+.card {
+    height: 100%; /* Ensures card takes full height of the parent column */
+  }
+  
+  .card-body {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .card-text.flex-grow-1 {
+    flex-grow: 1; /* Allows the description to grow and make cards consistent */
+  }
+  
+  .container .row > div {
+    display: flex;
+  }
+  
+  .col-md-4 {
+    display: flex;
+    flex-direction: column;
+  }
+  
+
+  .canceled-event {
+    text-decoration: line-through;
+    opacity: 0.6;
+  }
+
+  ::ng-deep .custom-backdrop {
+    background-color: rgba(0, 0, 0, 0.6);
+}

@@ -1,0 +1,30 @@
+/* navbar.component.css */
+
+/* General Navbar Styles */
+.navbar {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Style for the centered links container */
+  .centered-links {
+    border: 1px solid #ccc;
+    background-color: #f8f9fa; /* Light gray background */
+    border-radius: 8px;
+    padding: 5px 20px;
+  }
+  
+  /* Center links within the container */
+  .centered-links .navbar-nav {
+    display: flex;
+    gap: 15px; /* Space between links */
+  }
+  
+  /* Additional Styling for Links */
+  .nav-link {
+    color: #333;
+    font-weight: 500;
+  }
+  .nav-link:hover {
+    color: #007bff;
+  }
+  

@@ -12,7 +12,8 @@ const routes: Routes = [
   { path:'registration' , component:RegistrationComponent},
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'account/confirmation/:uuid' , component: AccountConfirmationComponent},
-  { path: 'client' , loadChildren: () => import('./client/client.module').then((m) => m.ClientModule) }
+  { path: 'client' , loadChildren: () => import('./client/client.module').then((m) => m.ClientModule) },
+  { path: 'admin' , loadChildren: () => import('./admin/admin.module').then((m) => m.AdminModule) },
 ];
 
 @NgModule({

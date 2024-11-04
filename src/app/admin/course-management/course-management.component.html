@@ -1,0 +1,39 @@
+<div class="container mt-1">
+
+    <div class="mb-3">
+        <button class="btn btn-sm btn-secondary" (click)="openCreateCourseModal()">Create course</button>
+    </div>
+    <div class="table-responsive shadow-lg">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Cost</th>
+            <th scope="col">Status</th>
+            <th scope="col">Max Students</th>
+            <th scope="col">Registered Students</th>
+            <th scope="col">Creation Date</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let course of courses let i = index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{course.name}}</td>
+            <td>{{course.description}}</td>
+            <td>R{{course.amount}}</td>
+            <td>{{course.status}}</td>
+            <td>{{course.numberOfStudentsAllowed}}</td>
+            <td>{{course.currentStudentRegistered}}</td>
+            <td>{{ course.creationDate | date: 'shortDate' }}</td>
+            <td>
+                <button class="btn btn-sm btn-warning m-1" (click)="editCourse(course)"><i class="p-1 bi bi-pencil-square"></i>EDIT</button>
+                <button class="btn btn-sm btn-secondary m-1" (click)="openEvents(course.id)"><i class="p-1 bi bi-calendar-date"></i>EVENTS</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
