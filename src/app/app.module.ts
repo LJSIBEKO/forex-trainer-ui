@@ -17,6 +17,8 @@ import {AppUtilityService} from "./service/app-utility.service";
 import {LoaderService} from "./service/loader.service";
 import {TokenService} from "./service/token.service";
 import { AccountConfirmationComponent } from './account-confirmation/account-confirmation.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 @NgModule({
@@ -28,13 +30,14 @@ import { AccountConfirmationComponent } from './account-confirmation/account-con
     RegistrationComponent,
     ForgotPasswordComponent,
     LoaderComponent,
-    AccountConfirmationComponent
+    AccountConfirmationComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [
     SessionService,
@@ -43,6 +46,9 @@ import { AccountConfirmationComponent } from './account-confirmation/account-con
     TokenService,
     FormsModule,
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }
+  ],
+  exports:[
+    WelcomeNavBarComponent
   ],
   bootstrap: [AppComponent]
 })

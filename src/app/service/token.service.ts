@@ -41,6 +41,8 @@ export class TokenService {
   // Method to set the token and its expiration date
   setToken(token: string, expires: string) {
     const tokenData: TokenData = { token, expires };
+
+    console.log('setting token data ' +JSON.stringify(tokenData))
     localStorage.setItem('token_info', JSON.stringify(tokenData));
   }
 }

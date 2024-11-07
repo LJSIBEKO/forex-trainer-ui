@@ -61,10 +61,82 @@
         <app-chat></app-chat>
       </div>
 
+
+        <div class="chat-container"
+            style="height: 70vh; overflow-y: auto; border: 1px solid #ddd; border-radius: 5px; padding: 15px;">
+            <div class="message mb-3">
+                <div class="d-flex justify-content-start">
+                    <div class="user-message bg-primary text-white p-2 rounded">
+                        <strong>You:</strong>
+                        <p>Hello, I need assistance with my order.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="message mb-3">
+                <div class="d-flex justify-content-end">
+                    <div class="admin-message bg-secondary text-white p-2 rounded">
+                        <strong>Admin:</strong>
+                        <p>Sure, I can help you with that. What seems to be the issue?</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="message mb-3">
+                <div class="d-flex justify-content-start">
+                    <div class="user-message bg-primary text-white p-2 rounded">
+                        <strong>You:</strong>
+                        <p>I received the wrong item.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="message mb-3">
+                <div class="d-flex justify-content-end">
+                    <div class="admin-message bg-secondary text-white p-2 rounded">
+                        <strong>Admin:</strong>
+                        <p>I'm sorry to hear that. Can you provide your order number?</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="message mb-3">
+                <div class="d-flex justify-content-end">
+                    <div class="admin-message bg-secondary text-white p-2 rounded">
+                        <strong>Admin:</strong>
+                        <p>I'm sorry to hear that. Can you provide your order number?</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="message mb-3">
+                <div class="d-flex justify-content-end">
+                    <div class="admin-message bg-secondary text-white p-2 rounded">
+                        <strong>Admin:</strong>
+                        <p>I'm sorry to hear that. Can you provide your order number?</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="message mb-3">
+                <div class="d-flex justify-content-end">
+                    <div class="admin-message bg-secondary text-white p-2 rounded">
+                        <strong>Admin:</strong>
+                        <p>I'm sorry to hear that. Can you provide your order number?</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="input-group mt-3">
+            <input type="text" class="form-control" placeholder="Type your message..." aria-label="User's message">
+            <button class="btn btn-primary" type="button">Send</button>
+        </div>
     </div>
 
     <div *ngIf="currentPage==='events'" class="flex-grow-1 p-3 mt-4">
-        <!-- <h3>Events</h3> -->
+
         <div class="row">
             <div class="col-md-6">
                 <div class="card">
@@ -141,3 +213,4 @@
     <app-calender></app-calender>
   </div>
 </div>
+

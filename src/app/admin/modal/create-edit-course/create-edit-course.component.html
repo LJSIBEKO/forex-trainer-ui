@@ -1,0 +1,134 @@
+<div *ngIf="type==='create'">
+    <div class="container mt-1">
+        <h2 class="text-center mb-3">Create a New Course</h2>
+        <div class="modal-body-scrollable">
+            <form #courseForm="ngForm" (ngSubmit)="onSubmitCreate(courseForm)">
+                <!-- Course Name -->
+                <div class="row mb-3">
+                    <label for="name" class="col-form-label">Course Name</label>
+                    <div>
+                        <input type="text" class="form-control" id="name" name="name" required
+                            placeholder="Enter course name" [(ngModel)]="name">
+                    </div>
+                </div>
+                <!-- Amount -->
+                <div class="row mb-3">
+                    <label for="amount" class="col-form-label">Amount</label>
+                    <div>
+                        <input type="number" class="form-control" id="amount" name="amount" required step="0.01" min="0"
+                            placeholder="Enter course fee" [(ngModel)]="amount">
+                    </div>
+                </div>
+                <!-- Status -->
+                <div class="row mb-3">
+                    <label for="status" class="col-form-label">Status</label>
+                    <div>
+                        <select class="form-select" id="status" name="status" [(ngModel)]="status">
+                            <option value="AVAILABLE">Active</option>
+                            <option value="NOT_AVALIABLE">Inactive</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Number of Students Allowed -->
+                <div class="row mb-3">
+                    <label for="numberOfStudentsAllowed" class="col-form-label">Students Allowed</label>
+                    <div>
+                        <input type="number" class="form-control" id="numberOfStudentsAllowed"
+                            name="numberOfStudentsAllowed" min="1" placeholder="Enter max students allowed"
+                            [(ngModel)]="numberOfStudentsAllowed">
+                    </div>
+                </div>
+                <!-- Current Students Registered -->
+                <div class="row mb-3">
+                    <label for="currentStudentRegistered" class="col-form-label">Current Students</label>
+                    <div>
+                        <input type="number" class="form-control" id="currentStudentRegistered"
+                            name="currentStudentRegistered" min="0" placeholder="Enter current registered students"
+                            [(ngModel)]="currentStudentRegistered">
+                    </div>
+                </div>
+                <!-- Description -->
+                <div class="row mb-3">
+                    <label for="description" class="col-form-label">Description</label>
+                    <div>
+                        <textarea class="form-control" id="description" name="description" rows="3" required
+                            placeholder="Enter course description" [(ngModel)]="description"></textarea>
+                    </div>
+                </div>
+                <!-- Submit Button -->
+                <div class="d-flex justify-content-end">
+                    <button type="submit" class="btn btn-sm btn-primary">Create Course</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+
+<div *ngIf="type==='update'">
+    <div class="container mt-1">
+        <h2 class="text-center mb-3">Update Existing Course</h2>
+        <div class="modal-body-scrollable">
+            <form #courseForm="ngForm" (ngSubmit)="onSubmitUpdate(courseForm)">
+                <!-- Course Name -->
+                <div class="row mb-3">
+                    <label for="name" class="col-form-label">Course Name</label>
+                    <div>
+                        <input type="text" class="form-control" id="name" name="name" required
+                            placeholder="Enter course name" [(ngModel)]="name">
+                    </div>
+                </div>
+                <!-- Amount -->
+                <div class="row mb-3">
+                    <label for="amount" class="col-form-label">Amount</label>
+                    <div>
+                        <input type="number" class="form-control" id="amount" name="amount" required step="0.01" min="0"
+                            placeholder="Enter course fee" [(ngModel)]="amount">
+                    </div>
+                </div>
+                <!-- Status -->
+                <div class="row mb-3">
+                    <label for="status" class="col-form-label">Status</label>
+                    <div>
+                        <select class="form-select" id="status" name="status" [(ngModel)]="status">
+                            <option value="AVAILABLE">Active</option>
+                            <option value="NOT_AVALIABLE">Inactive</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Number of Students Allowed -->
+                <div class="row mb-3">
+                    <label for="numberOfStudentsAllowed" class="col-form-label">Students Allowed</label>
+                    <div>
+                        <input type="number" class="form-control" id="numberOfStudentsAllowed"
+                            name="numberOfStudentsAllowed" min="1" placeholder="Enter max students allowed"
+                            [(ngModel)]="numberOfStudentsAllowed">
+                    </div>
+                </div>
+                <!-- Current Students Registered -->
+                <div class="row mb-3">
+                    <label for="currentStudentRegistered" class="col-form-label">Current Students</label>
+                    <div>
+                        <input disabled type="number" class="form-control" id="currentStudentRegistered"
+                            name="currentStudentRegistered" min="0" placeholder="Enter current registered students"
+                            [(ngModel)]="currentStudentRegistered">
+                    </div>
+                </div>
+                <!-- Description -->
+                <div class="row mb-3">
+                    <label for="description" class="col-form-label">Description</label>
+                    <div>
+                        <textarea class="form-control" id="description" name="description" rows="3" required
+                            placeholder="Enter course description" [(ngModel)]="description"></textarea>
+                    </div>
+                </div>
+                <!-- Submit Button -->
+                <div class="d-flex justify-content-end">
+                    <button type="submit" class="btn btn-sm btn-primary">Update Course</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

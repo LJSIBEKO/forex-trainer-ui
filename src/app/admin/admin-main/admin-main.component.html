@@ -1,0 +1,21 @@
+<app-nav-bar></app-nav-bar>
+
+<div class="mt-5 d-flex">
+    <app-admin-side-nav (pageChange)="onPageChange($event)"></app-admin-side-nav>
+
+    <div *ngIf="currentPage=='users'" class="flex-grow-1 p-3 mt-4">
+        <app-user-management></app-user-management>
+    </div>
+
+    <div *ngIf="currentPage=='courses'" class="flex-grow-1 p-3 mt-4">
+         <app-course-management></app-course-management>
+    </div>
+
+    <div *ngIf="currentPage=='messages'" class="flex-grow-1 p-3 mt-4">
+        <app-messages-management></app-messages-management>
+    </div>
+
+    <div *ngIf="currentPage=='events'" class="flex-grow-1 p-3 mt-4">
+        <app-calendar-management></app-calendar-management>
+    </div>
+</div>

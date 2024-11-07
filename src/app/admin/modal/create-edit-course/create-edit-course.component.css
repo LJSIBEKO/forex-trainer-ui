@@ -1,0 +1,20 @@
+.modal-body-scrollable {
+    max-height: 400px; /* Adjust height as needed */
+    overflow-y: scroll; /* Allow scrolling */
+    padding: 20px; /* Padding for the scrollable area */
+}
+
+/* Hide scrollbar for webkit browsers */
+.modal-body-scrollable::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome, Safari and Opera */
+}
+
+/* Hide scrollbar for Firefox */
+.modal-body-scrollable {
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+}
+
+/* Hide scrollbar for Internet Explorer */
+.modal-body-scrollable {
+    -ms-overflow-style: none; /* Hide scrollbar for Internet Explorer */
+}

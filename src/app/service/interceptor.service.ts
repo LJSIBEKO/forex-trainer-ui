@@ -14,13 +14,19 @@ export class InterceptorService {
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     this.loaderService.show();
 
+    
+  
     const token = this.tokenService.getToken();
+
+    console.log('adding token '+ token)
     if (token && !this.tokenService.isTokenExpired()) {
       request = request.clone({
         setHeaders: {
           Authorization: `Bearer ${token}`
         }
       });
+
+      console.log('request '+JSON.stringify(request))
     } else {
       console.warn('Token has expired or does not exist. Please log in again.');
       this.tokenService.clearToken();

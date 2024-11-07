@@ -12,10 +12,6 @@ interface CalendarDay {
 })
 
 export class DashboardComponent {
-
-openAddCourseModal() {
-throw new Error('Method not implemented.');
-}
   currentPage: string='';
 
   onPageChange(page: string) {

@@ -1,0 +1,56 @@
+<div class="container mt-1">
+    <h2 class="text-center mb-3">Create a New Event</h2>
+    <div class="modal-body-scrollable">
+        <form #eventForm="ngForm" (ngSubmit)="onSubmitCreate(eventForm)">
+            <!-- Event Name -->
+            <div class="row mb-3">
+                <label for="name" class="col-form-label">Event Name</label>
+                <div>
+                    <input type="text" class="form-control" id="name" name="name" required
+                           placeholder="Enter event name" [(ngModel)]="name">
+                </div>
+            </div>
+
+            <!-- Description -->
+            <div class="row mb-3">
+                <label for="description" class="col-form-label">Description</label>
+                <div>
+                    <textarea class="form-control" id="description" name="description" rows="3" required
+                              placeholder="Enter event description" [(ngModel)]="description"></textarea>
+                </div>
+            </div>
+
+            <!-- Date Picker -->
+            <div class="row mb-3">
+                <label for="date" class="col-form-label">Select Date</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="bi bi-calendar3"></i></span>
+                    </div>
+                    <input name="thedate" type="text" placeholder="Choose date" class="form-control"
+                           bsDatepicker [(ngModel)]="selectedDate">
+                </div>
+            </div>
+
+            <!-- Time Picker "From" and "To" -->
+            <div class="row mb-3">
+                <label for="time" class="col-form-label">Select Time</label>
+                <div class="col-md-6">
+                    <label for="fromTime" class="form-label">From</label>
+                    <timepicker name="fromtime" [(ngModel)]="fromTime" [hourStep]="1" [minuteStep]="15" 
+                                [showMeridian]="true"></timepicker>
+                </div>
+                <div class="col-md-6">
+                    <label for="toTime" class="form-label">To</label>
+                    <timepicker name="totime" [(ngModel)]="toTime" [hourStep]="1" [minuteStep]="15" 
+                                [showMeridian]="true"></timepicker>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="d-flex justify-content-end">
+                <button type="submit" class="btn btn-primary">Create Event</button>
+            </div>
+        </form>
+    </div>
+</div>

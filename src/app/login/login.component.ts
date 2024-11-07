@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import {AppUtilityService} from "../service/app-utility.service";
 import {SessionService} from "../service/session.service";
 import {TokenService} from "../service/token.service";
-import {Router} from "@angular/router";
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-login',
@@ -38,6 +39,7 @@ export class LoginComponent {
         if(response&&response.error){
           console.log(response)
           this.errorMessage = (response.message === '') ? 'Error occurred please try again later' : response.error.message;
+
         }else{
           this.tokenService.setToken(response?.token,response?.expires);
           localStorage.setItem('client_information',JSON.stringify(response.account));

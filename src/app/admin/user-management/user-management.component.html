@@ -1,0 +1,32 @@
+<div class="container mt-1">
+    <div class="table-responsive shadow-lg">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Username</th>
+            <th scope="col">Email</th>
+            <th scope="col">Mobile</th>
+            <th scope="col">Account Status</th>
+            <!-- <th scope="col">Permissions</th> -->
+            <th scope="col">Creation Date</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users let i = index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{user.username}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.mobile}}</td>
+            <td>{{user.accountStatus}}</td>
+            <!-- <td>{{user.permissions}}</td> -->
+            <td>{{user.creationDate | date: 'shortDate' }}</td>
+            <td>
+                <button class="btn btn-sm btn-warning m-1">EDIT</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
