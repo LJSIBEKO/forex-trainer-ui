@@ -18,6 +18,10 @@ import {LoaderService} from "./service/loader.service";
 import {TokenService} from "./service/token.service";
 import { AccountConfirmationComponent } from './account-confirmation/account-confirmation.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PaymentSuccessComponent } from './payment-success/payment-success.component';
+import { PaymentCancelComponent } from './payment-cancel/payment-cancel.component';
+import {BookingService} from "./service/booking.service";
+import {PaymentService} from "./service/payment.service";
 
 
 
@@ -31,6 +35,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ForgotPasswordComponent,
     LoaderComponent,
     AccountConfirmationComponent,
+    PaymentSuccessComponent,
+    PaymentCancelComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,6 +51,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     LoaderService,
     TokenService,
     FormsModule,
+    BookingService,
+    PaymentService,
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }
   ],
   exports:[

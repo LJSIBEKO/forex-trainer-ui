@@ -10,6 +10,8 @@ import { CalenderComponent } from './calender/calender.component';
 import {FormsModule} from "@angular/forms";
 import { ChatComponent } from './chat/chat.component';
 import { MessageComponent } from './message/message.component';
+import { CourseComponent } from './course/course.component';
+import { BookingsComponent } from './bookings/bookings.component';
 
 
 
@@ -21,7 +23,9 @@ import { MessageComponent } from './message/message.component';
     DashboardSideNavComponent,
     CalenderComponent,
     ChatComponent,
-    MessageComponent
+    MessageComponent,
+    CourseComponent,
+    BookingsComponent
   ],
   imports: [
     CommonModule,

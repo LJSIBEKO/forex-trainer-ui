@@ -1,0 +1,28 @@
+.container {
+  padding-top: 50px;
+}
+
+.card {
+  margin-bottom: 20px;
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+.card-header {
+  font-size: 1.2em;
+  font-weight: bold;
+  text-align: center;
+}
+
+.card-body {
+  padding: 15px;
+}
+
+canvas {
+  display: block;
+  margin: auto;
+}
+
+.shadow-lg {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
