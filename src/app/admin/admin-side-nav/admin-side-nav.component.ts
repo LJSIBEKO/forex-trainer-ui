@@ -9,7 +9,7 @@ export class AdminSideNavComponent {
 
   @Output() pageChange: EventEmitter<string> = new EventEmitter<string>();
 
-  curPage:string='users';
+  curPage:string='bookings';
 
   changePage(page: string) {
     this.pageChange.emit(page);

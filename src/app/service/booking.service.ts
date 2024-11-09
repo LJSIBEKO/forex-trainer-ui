@@ -29,4 +29,15 @@ export class BookingService {
     );
   }
 
+  public getBookings(userId:any){
+    return this.http.get(this.appUtil.getBaseUrl()+'booking/'+userId,this.jsonOptions).pipe(
+      catchError(this.handleError<any>('getBookings', {error: ''}))
+    )
+  }
+
+  getAllBookings() {
+    return this.http.get(this.appUtil.getBaseUrl()+'booking',this.jsonOptions).pipe(
+      catchError(this.handleError<any>('getBookings', {error: ''}))
+    )
+  }
 }

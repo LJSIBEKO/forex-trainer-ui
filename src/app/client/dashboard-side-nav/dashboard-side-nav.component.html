@@ -18,5 +18,12 @@
         Calendar
       </a>
     </li>
+
+    <li class="py-2">
+      <a class="text-decoration-none link-item text-dark" (click)="changePage('bookings')" [ngClass]="{'bg-color': curPage === 'bookings'}">
+        <i class="fas fa-calendar-alt me-2"></i> <!-- Calendar icon -->
+        Bookings
+      </a>
+    </li>
   </ol>
 </nav>

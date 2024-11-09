@@ -43,7 +43,14 @@ export class LoginComponent {
         }else{
           this.tokenService.setToken(response?.token,response?.expires);
           localStorage.setItem('client_information',JSON.stringify(response.account));
-          this.route.navigateByUrl('/client/dashboard')
+
+          const hasSuperAdminRole = response?.account?.roles?.includes('SUPER_ADMINISTRATOR');
+
+          if (hasSuperAdminRole) {
+            this.route.navigateByUrl('/admin/admin');
+          } else {
+            this.route.navigateByUrl('/client/dashboard');
+          }
         }
     })
   }

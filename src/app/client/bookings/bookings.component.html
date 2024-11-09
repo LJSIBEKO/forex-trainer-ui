@@ -1,1 +1,46 @@
-<p>bookings works!</p>
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Your Bookings</h2>
+
+  <div *ngIf="booking.length > 0; else noBookings">
+    <table class="table table-hover table-bordered shadow-sm w-100">
+      <thead>
+      <tr class="table-header">
+        <th>Course Name</th>
+        <th>Course Description</th>
+        <th>Course Status</th>
+        <th>Price (ZAR)</th>
+        <th>Payment Status</th>
+        <th>Start Time</th>
+        <th>End Time</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of booking">
+        <td>{{ item.cource.name }}</td>
+        <td>{{ item.cource.description }}</td>
+        <td>
+            <span class="badge"
+                  [ngClass]="item.cource.status === 'AVAILABLE' ? 'bg-success' : 'bg-secondary'">
+              {{ item.cource.status }}
+            </span>
+        </td>
+        <td>R{{ item.price | number: '1.2-2' }}</td>
+        <td>
+            <span class="badge"
+                  [ngClass]="item.paid ? 'bg-success' : 'bg-danger'">
+              {{ item.paid ? 'Paid' : 'Unpaid' }}
+            </span>
+        </td>
+        <td>{{ item.startTime | date: 'short' }}</td>
+        <td>{{ item.endTime | date: 'short' }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #noBookings>
+    <div class="alert alert-warning text-center" role="alert">
+      You have no bookings yet.
+    </div>
+  </ng-template>
+</div>

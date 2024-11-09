@@ -3,6 +3,10 @@
 <div class="mt-5 d-flex">
     <app-admin-side-nav (pageChange)="onPageChange($event)"></app-admin-side-nav>
 
+  <div *ngIf="currentPage=='bookings'" class="flex-grow-1 p-3 mt-4">
+    <app-bookimgs></app-bookimgs>
+  </div>
+
     <div *ngIf="currentPage=='users'" class="flex-grow-1 p-3 mt-4">
         <app-user-management></app-user-management>
     </div>

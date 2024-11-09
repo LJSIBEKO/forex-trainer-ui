@@ -15,6 +15,7 @@ import { CreateEditCourseComponent } from './modal/create-edit-course/create-edi
 import { CreateEditEventComponent } from './modal/create-edit-event/create-edit-event.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { TimepickerModule } from 'ngx-bootstrap/timepicker';
+import { BookimgsComponent } from './bookimgs/bookimgs.component';
 
 
 
@@ -29,7 +30,8 @@ import { TimepickerModule } from 'ngx-bootstrap/timepicker';
     AdminMainComponent,
     NavBarComponent,
     CreateEditCourseComponent,
-    CreateEditEventComponent
+    CreateEditEventComponent,
+    BookimgsComponent
   ],
   imports: [
     CommonModule,

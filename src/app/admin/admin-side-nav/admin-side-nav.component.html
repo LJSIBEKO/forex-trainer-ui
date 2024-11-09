@@ -1,14 +1,18 @@
 <nav style="width: 200px;">
     <ol class="list-unstyled p-3">
+
+      <li class="py-2">
+        <a class="text-decoration-none link-item text-dark" (click)="changePage('bookings')" [ngClass]="{'bg-color': curPage === 'bookings'}">Bookings</a>
+      </li>
         <li class="py-2">
             <a class="text-decoration-none link-item text-dark" (click)="changePage('users')" [ngClass]="{'bg-color': curPage === 'users'}">Users</a>
         </li>
         <li class="py-2">
             <a class="text-decoration-none link-item text-dark" (click)="changePage('courses')" [ngClass]="{'bg-color': curPage === 'courses'}">Courses</a>
         </li>
-        <li class="py-2">
-            <a class="text-decoration-none link-item text-dark" (click)="changePage('messages')" [ngClass]="{'bg-color': curPage === 'messages'}">Messages</a>
-        </li>
+<!--        <li class="py-2">-->
+<!--            <a class="text-decoration-none link-item text-dark" (click)="changePage('messages')" [ngClass]="{'bg-color': curPage === 'messages'}">Messages</a>-->
+<!--        </li>-->
         <li class="py-2">
             <a class="text-decoration-none link-item text-dark" (click)="changePage('events')" [ngClass]="{'bg-color': curPage === 'events'}">Events</a>
         </li>

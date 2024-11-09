@@ -1,0 +1,89 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Admin Dashboard</h2>
+
+  <!-- Dashboard Statistics (Cards) -->
+  <div class="row mb-4">
+    <!-- Total Bookings -->
+    <div class="col-md-3">
+      <div class="card shadow-sm">
+        <div class="card-body text-center">
+          <h5 class="card-title">Total Bookings</h5>
+          <p class="card-text fs-4">{{ totalBookings }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Completed Payments -->
+    <div class="col-md-3">
+      <div class="card shadow-sm">
+        <div class="card-body text-center">
+          <h5 class="card-title">Completed Payments</h5>
+          <p class="card-text fs-4">{{ completedPayments }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pending Payments -->
+    <div class="col-md-3">
+      <div class="card shadow-sm">
+        <div class="card-body text-center">
+          <h5 class="card-title">Pending Payments</h5>
+          <p class="card-text fs-4">{{ pendingPayments }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Total Revenue -->
+    <div class="col-md-3">
+      <div class="card shadow-sm">
+        <div class="card-body text-center">
+          <h5 class="card-title">Total Revenue (ZAR)</h5>
+          <p class="card-text fs-4">R{{ totalRevenue | number: '1.2-2' }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bookings Table -->
+  <h3 class="mb-3">All Bookings</h3>
+  <div *ngIf="allBookings.length > 0; else noBookings">
+    <table class="table table-hover table-bordered table-striped shadow-sm">
+      <thead class="thead-dark">
+      <tr>
+        <th>Course Name</th>
+        <th>Description</th>
+        <th>Price (ZAR)</th>
+        <th>Payment Status</th>
+        <th>Start Time</th>
+        <th>End Time</th>
+        <th>Owner Email</th>
+        <th>Account Status</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let booking of allBookings">
+        <td>{{ booking.cource.name }}</td>
+        <td>{{ booking.cource.description }}</td>
+        <td>R{{ booking.price | number: '1.2-2' }}</td>
+        <td>
+            <span class="badge" [ngClass]="booking.paid ? 'bg-success' : 'bg-danger'">
+              {{ booking.paid ? 'Paid' : 'Unpaid' }}
+            </span>
+        </td>
+        <td>{{ booking.startTime | date: 'short' }}</td>
+        <td>{{ booking.endTime | date: 'short' }}</td>
+        <td>{{ booking.owner.email }}</td>
+        <td>
+          <span class="badge bg-info">{{ booking.owner.accountStatus }}</span>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #noBookings>
+    <div class="alert alert-warning text-center" role="alert">
+      No bookings found.
+    </div>
+  </ng-template>
+</div>
