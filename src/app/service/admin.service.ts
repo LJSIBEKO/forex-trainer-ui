@@ -61,9 +61,12 @@ export class AdminService {
   }
 
 
+
   public cancelEvent(eventId:string){
     return this.http.put(this.appUtil.base_url + 'event/cancel/'+eventId,this.jsonOptions).pipe(
       catchError(this.handleError<any>('put', {error: ''}))
     );
   }
+
+
 }

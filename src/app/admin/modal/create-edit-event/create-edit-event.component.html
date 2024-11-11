@@ -2,12 +2,23 @@
     <h2 class="text-center mb-3">Create a New Event</h2>
     <div class="modal-body-scrollable">
         <form #eventForm="ngForm" (ngSubmit)="onSubmitCreate(eventForm)">
+
+            <div class="row mb-3">
+                <label for="name" class="col-form-label">Course</label>
+                <div>
+                    <select type="text" class="form-control" id="course" name="course" required
+                        placeholder="Select course" [(ngModel)]="courseId">
+                        <option *ngFor="let course of courses" [value]="course.id">{{course.name}}</option>
+                    </select>
+                </div>
+            </div>
+
             <!-- Event Name -->
             <div class="row mb-3">
                 <label for="name" class="col-form-label">Event Name</label>
                 <div>
                     <input type="text" class="form-control" id="name" name="name" required
-                           placeholder="Enter event name" [(ngModel)]="name">
+                        placeholder="Enter event name" [(ngModel)]="name">
                 </div>
             </div>
 
@@ -16,7 +27,7 @@
                 <label for="description" class="col-form-label">Description</label>
                 <div>
                     <textarea class="form-control" id="description" name="description" rows="3" required
-                              placeholder="Enter event description" [(ngModel)]="description"></textarea>
+                        placeholder="Enter event description" [(ngModel)]="description"></textarea>
                 </div>
             </div>
 
@@ -27,8 +38,8 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="bi bi-calendar3"></i></span>
                     </div>
-                    <input name="thedate" type="text" placeholder="Choose date" class="form-control"
-                           bsDatepicker [(ngModel)]="selectedDate">
+                    <input name="thedate" type="text" placeholder="Choose date" class="form-control" bsDatepicker
+                        [(ngModel)]="selectedDate">
                 </div>
             </div>
 
@@ -37,13 +48,13 @@
                 <label for="time" class="col-form-label">Select Time</label>
                 <div class="col-md-6">
                     <label for="fromTime" class="form-label">From</label>
-                    <timepicker name="fromtime" [(ngModel)]="fromTime" [hourStep]="1" [minuteStep]="15" 
-                                [showMeridian]="true"></timepicker>
+                    <timepicker name="fromtime" [(ngModel)]="fromTime" [hourStep]="1" [minuteStep]="15"
+                        [showMeridian]="true"></timepicker>
                 </div>
                 <div class="col-md-6">
                     <label for="toTime" class="form-label">To</label>
-                    <timepicker name="totime" [(ngModel)]="toTime" [hourStep]="1" [minuteStep]="15" 
-                                [showMeridian]="true"></timepicker>
+                    <timepicker name="totime" [(ngModel)]="toTime" [hourStep]="1" [minuteStep]="15"
+                        [showMeridian]="true"></timepicker>
                 </div>
             </div>
 

@@ -10,7 +10,7 @@ import { AdminService } from 'src/app/service/admin.service';
 })
 export class CreateEditEventComponent {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any ,private adminService: AdminService, private dialogRef: MatDialogRef<CreateEditEventComponent>){
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private adminService: AdminService, private dialogRef: MatDialogRef<CreateEditEventComponent>) {
 
   }
 
@@ -34,9 +34,15 @@ export class CreateEditEventComponent {
   fromDateTime: Date = new Date();
   toDateTime: Date = new Date();
 
-  courseId:string ='585d9cb1-0cab-4865-91f7-1e1be8589fcb';
+  courseId: string = '';
 
 
+
+  courses:any;
+
+  ngOnInit(){
+    this.getAllCourses();
+  }
 
 
   private createDateTime(date: string, time: any): Date {
@@ -78,12 +84,12 @@ export class CreateEditEventComponent {
       "startTime": this.fromDateTime,
       "endTime": this.toDateTime,
       "description": this.description,
-      "isMandatory":false
+      "isMandatory": false
     }
 
 
     console.log(event);
-    this.adminService.createEvent(event,this.courseId).subscribe(
+    this.adminService.createEvent(event, this.courseId).subscribe(
 
       (response) => {
         console.log(response)
@@ -94,26 +100,23 @@ export class CreateEditEventComponent {
         }
       }
     )
-    
+
   }
 
 
-  // onSubmitCreate(form: any) {
+  public getAllCourses(){
+    this.adminService.getCourses().subscribe(
+      (response) => {
+        console.log(response)
+        if (response && response.error) {
+          console.log(response)
+        } else {
+          this.courses=response;
+        }
+      }
+    )
+    
+  }
 
-  //   this.fromDateTime = this.createDateTime(this.selectedDate, this.fromTime);
-  //   this.toDateTime = this.createDateTime(this.selectedDate, this.toTime);
-
-  //   console.log('From DateTime:', this.fromDateTime);
-  //   console.log('To DateTime:', this.toDateTime);
-
-  //   const eventData = {
-  //     name: form.value.name,
-  //     amount: form.value.amount,
-  //     status: form.value.status,
-  //     numberOfStudentsAllowed: form.value.numberOfStudentsAllowed,
-  //     currentStudentRegistered: form.value.currentStudentRegistered,
-  //     description: form.value.description
-  //   };
-  // }
 
 }

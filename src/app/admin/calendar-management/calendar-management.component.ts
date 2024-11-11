@@ -10,15 +10,17 @@ import { LoaderService } from 'src/app/service/loader.service';
   styleUrls: ['./calendar-management.component.css']
 })
 export class CalendarManagementComponent {
-
   constructor(private matDialog: MatDialog, private adminService: AdminService, private loader: LoaderService) { }
 
   events: any;
 
-  courseId: string = '585d9cb1-0cab-4865-91f7-1e1be8589fcb';
+  courseId: string = 'ALL';
+
+  courses: any;
 
 
   ngOnInit() {
+    this.getAllCourses();
     this.getAllEvents();
   }
 
@@ -68,6 +70,27 @@ export class CalendarManagementComponent {
 
       }
     })
+  }
+
+
+  getAllCourses() {
+    this.loader.show();
+    this.adminService.getCourses().subscribe((response) => {
+      console.log(response)
+      if (response && response.error) {
+        console.log(response)
+        this.loader.hide();
+
+      } else {
+        this.courses = response;
+        this.loader.hide();
+
+      }
+    })
+  }
+
+  courseChanged() {
+    this.getAllEvents();
   }
 
 

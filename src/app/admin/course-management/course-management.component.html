@@ -29,8 +29,8 @@
             <td>{{course.currentStudentRegistered}}</td>
             <td>{{ course.creationDate | date: 'shortDate' }}</td>
             <td>
-                <button class="btn btn-sm btn-warning m-1" (click)="editCourse(course)"><i class="p-1 bi bi-pencil-square"></i>EDIT</button>
-                <button class="btn btn-sm btn-secondary m-1" (click)="openEvents(course.id)"><i class="p-1 bi bi-calendar-date"></i>EVENTS</button>
+                <button class="btn btn-sm btn-warning m-1" (click)="editCourse(course)"><i class="p-1 bi bi-pencil-square"></i></button>
+                <!-- <button class="btn btn-sm btn-secondary m-1" (click)="openEvents(course.id)"><i class="p-1 bi bi-calendar-date"></i>EVENTS</button> -->
             </td>
           </tr>
         </tbody>
